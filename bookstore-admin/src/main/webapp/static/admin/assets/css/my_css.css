@@ -1,0 +1,36 @@
+#example_filter {
+    margin: 6px 0 5px 50%;
+}
+
+@media screen and (min-width: 800px){
+    #example_filter {
+        margin: 6px 0 5px 70%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    #example_filter {
+        margin: 6px 0 5px 30%;
+    }
+}
+
+.dt-buttons{
+    position: absolute;
+    margin: -6px 18px;
+    top: 0;
+}
+
+.dataTables_info{
+    margin-left: 30px;
+    margin-right: 180px;
+}
+
+#example_info{
+    color: #666 !important
+}
+
+.form-inline label {
+    margin-bottom: 0 !important;
+    margin: -9px 0;
+}
+

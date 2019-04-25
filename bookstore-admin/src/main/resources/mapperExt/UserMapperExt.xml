@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bookstore.dao.mapping.ext.UserMapperExt" >
+
+  <resultMap id="BaseResultMap" type="com.bookstore.dao.pojo.User"
+      extends="com.bookstore.dao.mapping.UserMapper.BaseResultMap">
+  </resultMap>
+<!--原本是通过phone或者email来分类判断的,后来就分开写了-->
+  <select id="getUserInfo" resultMap="BaseResultMap">
+    select * from user
+    <where>
+      password = #{password}
+      <choose>
+        <when test="phone != null and phone != ''">
+          AND phone = #{phone}
+        </when>
+        <otherwise>
+          AND email = #{email}
+        </otherwise>
+      </choose>
+    </where>
+  </select>
+
+  <select id="getUserInfoPh" resultMap="BaseResultMap">
+    select * from user
+    where phone=#{phone}
+    and password=#{password}
+  </select>
+  <select id="getUserInfoEm" resultMap="BaseResultMap">
+    select * from user
+    where email=#{email}
+    and password=#{password}
+  </select>
+
+  <select id="getSaltByEm" resultMap="BaseResultMap">
+    select a.salt from user a
+    where email=#{email}
+  </select>
+  <select id="getSaltByPh" resultMap="BaseResultMap">
+    select a.salt from user a
+    where phone=#{phone}
+  </select>
+
+  <select id="getRemoteByPh" resultMap="BaseResultMap">
+    select * from user
+    where phone=#{phone}
+  </select>
+  <select id="getRemoteByEm" resultMap="BaseResultMap">
+    select * from user
+    where email=#{email}
+  </select>
+
+  <insert id="insertPh">
+    insert into user (phone,password,salt)
+    values (#{phone},#{password},#{salt})
+  </insert>
+  <insert id="insertEm">
+    insert into user (email,password,salt)
+    values (#{email},#{password},#{salt})
+  </insert>
+</mapper>

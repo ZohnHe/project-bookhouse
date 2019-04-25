@@ -1,0 +1,222 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>书屋 | 用户注册界面</title>
+    <link rel="stylesheet" href="/static/ui/assets/css/reset.css"/>
+    <link rel="stylesheet" href="/static/ui/assets/css/common.css"/>
+    <link rel="stylesheet" href="/static/ui/assets/css/font-awesome.min.css"/>
+</head>
+<body>
+<div class="wrap login_wrap">
+    <div class="content">
+
+        <div class="login_box my_register"></div>
+
+        <div class="login_form my_regBody">
+            <div class="login_title">
+                注册
+            </div>
+            <form id="registerFrm">
+
+                <div class="form_text_ipt">
+                    <input id="emailphone" name="emailphone" type="text" placeholder="手机号/邮箱" minlength="7" required>
+                </div>
+                <div></div><!--这个div是为了防止验证后,插件自动给下一个div加个隐藏的样式-->
+               <!-- <div class="ececk_warning"><span>手机号/邮箱不能为空</span></div>-->
+                <div class="form_text_ipt">
+                    <input id="password" name="password" type="password" placeholder="密码" minlength="7" required>
+                </div>
+                <div></div>
+                <!--<div class="ececk_warning"><span>密码不能为空</span></div>-->
+                <div class="form_text_ipt">
+                    <input id="repassword" name="repassword" type="password" placeholder="确认密码" minlength="7" required>
+                </div>
+                <div></div>
+                <!--<div class="ececk_warning"><span>确认密码不能为空</span></div>-->
+                <div class="form_text_ipt">
+                    <input id="code" name="code" type="text" placeholder="验证码" minlength="1" required>
+                </div>
+                <div></div>
+                <p class="my_codeImg">&nbsp;
+                    <img id="verification" src="/verification" style="cursor: pointer;" title="看不清？换一张" />
+                    <a id="verification1" href="#">&nbsp;看不清？换一张</a>
+                </p>
+                <!--<div class="ececk_warning"><span>验证码不能为空</span></div>-->
+                <span id="errormsg" style="text-align: center;display:block;"></span>
+                <div class="form_btn">
+                    <button id="register" type="button">注册</button>
+                </div>
+                <div class="form_reg_btn">
+                    <span>已有帐号？</span><a href="/user/toLogin">马上登录</a>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+<script type="text/javascript" src="/static/ui/assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="/static/ui/assets/js/common.js"></script>
+<script src="/static/ui/assets/js/jquery.md5.js"></script>
+<!--验证-->
+<!--<script src="http://static.runoob.com/assets/jquery-validation-1.14.0/lib/jquery.js"></script>-->
+<script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
+<script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        //刷新验证码
+        $("#verification").bind("click", function () {
+            $(this).hide().attr('src', '/verification?random=' + Math.random()).fadeIn();
+        });
+        $("#verification1").bind("click", function () {
+            $("#verification").hide().attr('src', '/verification?random=' + Math.random()).fadeIn();
+        });
+        //表单验证,验证代码
+        $("#registerFrm").validate({
+            rules: {
+                emailphone: {
+                    required: true,
+                    minlength: 7,
+                    //异步验证 开始 TODO 这里的请求json格式有毛病,导致传不过去,待修改
+                      remote: {
+                          url: "/user/remote",//发送请求的url地址
+                          type: "POST",        //请求方式
+                          contentType: "application/json;charset=UTF-8",
+                          data: {
+                              emailphone:function () {
+                                  return $("#emailphone").val();
+                              }
+                          },
+                          dataType: "json",
+                          dataFilter: function (data, type) {  //过滤返回结果
+                              var asas=jQuery.parseJSON(data);
+                              if (asas.flag == "1101") {
+                                  return false;
+                              } else {
+                                  return data;
+                              }
+                             /* if (data == "true") {
+                                  return true;  //true代表用户名还未存在
+                              }else {
+                                  return false; //false代表用户名已经存在
+                              }*/
+                          }
+                     }
+                    //异步验证 结束
+                },
+                password: {
+                    required: true,
+                    minlength: 7
+                },
+                repassword:{
+                    required: true,
+                    equalTo: "#password"
+                },
+                code:{
+                    required: true,
+                    minlength: 1
+                }
+            },
+            messages:{
+                emailphone: {
+                    required: "请输入手机名/邮箱",
+                    minlength: "手机名/邮箱至少由七个字母组成",
+                    remote: "输入的手机名/邮箱已经存在"
+                },
+                password: {
+                    required: "请输入密码",
+                    minlength: "密码长度不能小于 7 个字母"
+                },
+                repassword:{
+                    required: "请输入确认密码",
+                    equalTo: "确认密码与密码不同"
+                },
+                code:{
+                    required: "请输入验证码",
+                    minlength: "验证码不能为空"
+                }
+            }
+        });
+    });
+    //点击注册
+    $("#register").click(function () {
+        var code=$("#code").val();
+        $.ajaxSettings.async = false;
+        //先进行验证码的校验,test---开关
+        var test=true;
+            $.ajax({
+                type: "POST",
+                url: "/checkCode",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify({
+                    "code": code
+                }),
+                dataType: "json",
+                success: function (data) {
+                    // debugger
+                    var json = data;
+                    if (json.code == '200') {
+                        if (json.data.success == 0) {
+                            $("#errormsg").text("验证码输入错误!").css("color", "red");
+                            test=false;
+                        }
+                    } else {
+                        $("#errormsg").text("验证码不能为空").css("color", "red");
+                            test=false;
+                    }
+                },
+                error: function (message) {
+                    $("#request-process-patent").html("提交数据失败！");
+                    test=false;
+                }
+            });
+        $.ajaxSettings.async = true;
+        if(!test){
+            return;
+        }
+        var emailphone=$("#emailphone").val();
+        var password=$("#password").val();
+
+        var tip = $("#registerFrm").valid();
+        if(!tip){
+            //没有通过验证
+            alert("没有通过验证");
+            return;
+        }
+        //设置盐值,并加密
+        var salt= Math.ceil(Math.random()*100000);
+        password=$.md5(password);
+        password=$.md5(password+salt);
+
+        //进后台注册
+        $.ajax({
+            type: "POST",
+            url: "/user/register",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify({
+                "emailphone": emailphone,
+                "password": password,
+                "salt":salt
+            }),
+            dataType: "json",
+            success: function (data) {
+                // debugger
+                var json = data;
+                if(json.code=='200'){
+                    if (json.data.success == 0) {
+                        $("#errormsg").text("手机号/邮箱已经存在").css("color","red");
+                    } else if (json.data.success == 1) {
+                        location.href = "/user/toLogin";
+                    }
+                }else{
+                    $("#errormsg").text("手机号/邮箱或密码不能为空").css("color","red");
+                }
+            },
+            error: function (message) {
+                $("#request-process-patent").html("提交数据失败！");
+            }
+        });
+    })
+</script>
+</body>
+</html>

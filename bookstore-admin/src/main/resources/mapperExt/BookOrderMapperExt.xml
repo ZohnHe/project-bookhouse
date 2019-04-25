@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bookstore.dao.mapping.ext.BookOrderMapperExt" >
+  <resultMap id="BaseResultMap" type="com.bookstore.dao.pojo.BookOrder"
+             extends="com.bookstore.dao.mapping.BookOrderMapper.BaseResultMap">
+  </resultMap>
+
+  <resultMap id="BaseResultMapUn" type="com.bookstore.dao.pojo.ext.UnionInfo"
+             extends="com.bookstore.dao.mapping.BookOrderMapper.BaseResultMap">
+  </resultMap>
+
+  <update id="updateOrderByOid">
+    update book_order
+    set oname=#{oname},adress=#{adress},status=#{status}
+    where oid=#{oid}
+  </update>
+
+  <select id="searchUn" resultMap="BaseResultMapUn">
+    select o.*,b.bname,b.image,b.pirce,d.book_num
+    from book_order o,book b,order_detail d
+    where o.oid = d.order_id
+    and d.book_id=b.bid
+    <if test="oid!=null and oid > 0">
+      and o.oid like '%${oid}%'
+    </if>
+  </select>
+</mapper>

@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>书屋|书籍管理</title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
+          name='viewport'/>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <!--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">-->
+    <link rel="stylesheet" href="assets/css/ready.css">
+    <link rel="stylesheet" href="assets/css/demo.css">
+    <link rel="stylesheet" href="assets/css/my_css.css">
+    <link href="http://cdn.bootcss.com/datatables/1.10.11/css/dataTables.bootstrap.min.css" rel="stylesheet"
+          media="screen">
+    <link href="http://cdn.bootcss.com/datatables/1.10.11/css/jquery.dataTables.min.css" rel="stylesheet"
+          media="screen">
+    <link rel="stylesheet" href="assets/dropzone/dropzone.css">
+
+</head>
+<body>
+<div class="wrapper">
+    <div class="main-header">
+        <div class="logo-header">
+            <a class="logo">
+                BookHouse 后台管理
+            </a>
+            <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse"
+                    data-target="collapse" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <button class="topbar-toggler more"><i class="la la-ellipsis-v"></i></button>
+        </div>
+        <nav class="navbar navbar-header navbar-expand-lg">
+            <div class="container-fluid">
+
+                <form class="navbar-left navbar-form nav-search mr-md-3" action="">
+                    <div class="input-group">
+                        <input type="text" placeholder="查找" class="form-control">
+                        <div class="input-group-append">
+							<span class="input-group-text">
+								<i class="la la-search search-icon"></i>
+							</span>
+                        </div>
+                    </div>
+                </form>
+                <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
+                    <li class="nav-item dropdown hidden-caret">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="la la-envelope"></i>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">站内信</a>
+                            <a class="dropdown-item" href="#">未读邮件</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">设置</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown hidden-caret">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="la la-bell"></i>
+                            <span class="notification">3</span>
+                        </a>
+                        <ul class="dropdown-menu notif-box" aria-labelledby="navbarDropdown">
+                            <li>
+                                <div class="dropdown-title">您有<span>3</span>条未读消息</div>
+                            </li>
+                            <li>
+                                <div class="notif-center">
+                                    <a href="#">
+                                        <div class="notif-icon notif-primary"><i class="la la-user-plus"></i></div>
+                                        <div class="notif-content">
+												<span class="block">
+													新用户注册
+												</span>
+                                            <span class="time">5 分钟前</span>
+                                        </div>
+                                    </a>
+                                    <a href="#">
+                                        <div class="notif-icon notif-success"><i class="la la-comment"></i></div>
+                                        <div class="notif-content">
+												<span class="block">
+													评论管理
+												</span>
+                                            <span class="time">12 分钟前</span>
+                                        </div>
+                                    </a>
+                                    <a href="#">
+                                        <div class="notif-img">
+                                            <img src="assets/img/profile2.jpg" alt="Img Profile">
+                                        </div>
+                                        <div class="notif-content">
+												<span class="block">
+													Zohn
+												</span>
+                                            <span class="time">12 分钟前</span>
+                                        </div>
+                                    </a>
+                                    <a href="#">
+                                        <div class="notif-icon notif-danger"><i class="la la-heart"></i></div>
+                                        <div class="notif-content">
+												<span class="block">
+													老王喜欢了您的评论
+												</span>
+                                            <span class="time">17 分钟前</span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </li>
+                            <li>
+                                <a class="see-all" href="javascript:void(0);"> <strong>查看更多</strong> <i
+                                        class="la la-angle-right"></i> </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
+                            <img src="assets/img/profile.jpg" alt="user-img" width="36"
+                                 class="img-circle"><span>Admin</span></a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li>
+                                <div class="user-box">
+                                    <div class="u-img"><img src="assets/img/profile.jpg" alt="user"></div>
+                                    <div class="u-text">
+                                        <h4>Admin</h4>
+                                        <p class="text-muted">hello@themekita.com</p><a href="profile.html"
+                                                                                        class="btn btn-rounded btn-danger btn-sm">名片展示</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#"><i class="ti-user"></i> 个人信息</a>
+                            <a class="dropdown-item" href="#"></i> 我的发布</a>
+                            <a class="dropdown-item" href="#"><i class="ti-email"></i> 收件箱</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#"><i class="ti-settings"></i> 账户设置 </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#"><i class="fa fa-power-off"></i> 退出</a>
+                        </ul>
+                        <!-- /.dropdown-user -->
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div class="sidebar">
+        <div class="scrollbar-inner sidebar-wrapper">
+            <div class="user">
+                <div class="photo">
+                    <img src="assets/img/profile.jpg">
+                </div>
+                <div class="info">
+                    <a class="" data-toggle="collapse" href="#collapseExample" aria-expanded="true">
+								<span>
+									Admin
+									<span class="user-level">管理员账户</span>
+									<span class="caret"></span>
+								</span>
+                    </a>
+                    <div class="clearfix"></div>
+
+                    <div class="collapse in" id="collapseExample" aria-expanded="true" style="">
+                        <ul class="nav">
+                            <li>
+                                <a href="#profile">
+                                    <span class="link-collapse">个人信息</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#edit">
+                                    <span class="link-collapse">编辑</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#settings">
+                                    <span class="link-collapse">设置</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <ul class="nav">
+                <li class="nav-item">
+                    <a href="index.html">
+                        <i class="la la-dashboard"></i>
+                        <p>后台信息</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="customer.html">
+                        <i class="la la-user"></i>
+                        <p>用户</p>
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a href="books.html">
+                        <i class="la la-book"></i>
+                        <p>书籍</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="order.html">
+                        <i class="la la-th"></i>
+                        <p>订单</p>
+                    </a>
+                </li>
+
+                <li class="nav-item update-pro" onclick="location.href='/static/ui/index.html'">
+                    <button>
+                        <i class="la la-hand-pointer-o"></i>
+                        <p>回到书屋</p>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="main-panel">
+        <div class="content">
+            <div class="container-fluid">
+
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="card card-tasks">
+                            <div class="card-header row">
+                                <div class="col-md-9">
+                                    <h3 class="card-title">图书管理</h3>
+                                </div>
+                            </div>
+                            <div class="card-body ">
+                                <div class="table-full-width">
+                                    <table class="table" id="example">
+                                        <thead>
+                                        <tr>
+                                            <th>
+                                                <label class="form-check-label">
+                                                    <input id="allElection"
+                                                           class="form-check-input  select-all-checkbox"
+                                                           type="checkbox" data-select="checkbox"
+                                                           data-target=".task-select">
+                                                    <span class="form-check-sign"></span>
+                                                </label>
+                                            </th>
+                                            <th>ID</th>
+                                            <th>书名</th>
+                                            <th>价格</th>
+                                            <th>作者</th>
+                                            <th>出版商</th>
+                                            <th>类型</th>
+                                            <th>库存</th>
+                                            <th>操作</th>
+                                        </tr>
+                                        </thead>
+                                        <!--<tbody>-->
+
+                                        <!--<tr>-->
+                                        <!--傅以登编写-->
+                                        <!--<td>-->
+                                        <!--<div class="form-check">-->
+                                        <!--<label class="form-check-label"><input class="form-check-input task-select" type="checkbox"><span class="form-check-sign"></span></label>-->
+                                        <!--</div>-->
+                                        <!--</td>-->
+
+                                        <!--<td class="td-actions text-center">-->
+                                        <!--<div class="form-button-action">-->
+                                        <!--<button type="button" data-toggle="tooltip" title="Edit Task" class="btn btn-link <btn-simple-primary"><i class="la la-edit"></i></button><button type="button" data-toggle="tooltip" title="Remove" class="btn btn-link btn-simple-danger"><i class="la la-times"></i></button>-->
+                                        <!--</div>-->
+                                        <!--</td>-->
+                                        <!--</tr>-->
+
+                                        <!--</tbody>-->
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="container-fluid">
+                <nav class="pull-left">
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                博客
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                帮助
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#license/#free-item">
+                                许可证
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </footer>
+    </div>
+</div>
+</div>
+<!--新增图书 Modal 模态框 -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">新增图书</h4>
+            </div>
+            <div class="modal-body">
+                <form id="booksFrm" method="post">
+                    <table class="form">
+                        <tr>
+                            <td class="field">图书名称：</td>
+                            <td><input type="text" class="text" name="bname" value=""/></td>
+                        </tr>
+                        <tr>
+                            <td class="field">图书描述：</td>
+                            <td><input type="text" class="text" name="detail" value=""/></td>
+                        </tr>
+                        <tr>
+                            <td class="field">图书价格：</td>
+                            <td><input type="text" class="text tiny" name="pirce"/> 元</td>
+                        </tr>
+                        <tr>
+                            <td class="field">所属分类：</td>
+                            <td>
+                                <select name="type" class="form-control" style="width: 90px;">
+
+                                    <option value="治愈">治愈</option>
+
+                                    <option value="经济">经济</option>
+
+                                    <option value="文学">文学</option>
+
+                                    <option value="社会科学">社会科学</option>
+
+                                    <option value="艺术">艺术</option>
+
+                                    <option value="历史">历史</option>
+
+                                    <option value="童话">童话</option>
+
+                                    <option value="政治理论">政治理论</option>
+
+                                    <option value="小说">小说</option>
+
+                                    <option value="管理学">管理学</option>
+
+                                    <option value="心理">心理</option>
+
+                                    <option value="计算机">计算机</option>
+
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="field">作者：</td>
+                            <td><input type="text" class="text" name="writer"/></td>
+                        </tr>
+                        <tr>
+                            <td class="field">出版社：</td>
+                            <td><input type="text" class="text" name="printer"/></td>
+                        </tr>
+                        <tr>
+                            <td class="field">出版日期：</td>
+                            <td>
+                                <input class="Wdate" type="text" name="date" onClick="WdatePicker()">
+                            </td>
+                        </tr>
+                        <tr>
+                            <div id="dropz" class="dropzone"></div>
+                            <input type="hidden" name="image" id="file_id"/>
+                        </tr>
+                        <tr>
+                            <td class="field">库存：</td>
+                            <td><input type="text" class="text tiny" name="stock"/></td>
+                        </tr>
+                    </table>
+                </form>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button id="booksSub" type="button" class="btn btn-primary">提交</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+<!--修改图书信息 Modal 模态框 -->
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">修改信息</h4>
+            </div>
+            <div class="modal-body">
+                <form id="booksFrm2" method="post">
+                    <table class="form">
+                        <tr>
+                            <td><input id="bid" type="hidden" class="text" name="bid" value=""/></td>
+                        </tr>
+                        <tr>
+                            <td class="field">图书名称：</td>
+                            <td><input id="bname" type="text" class="text" name="bname" value=""/></td>
+                        </tr>
+                        <tr>
+                            <td class="field">图书价格：</td>
+                            <td><input id="pirce" type="text" class="text tiny" name="pirce"/> 元</td>
+                        </tr>
+                        <tr>
+                            <td class="field">所属分类：</td>
+                            <td>
+                                <select id="type" name="type" class="form-control" style="width: 90px;">
+
+                                    <option value="治愈">治愈</option>
+
+                                    <option value="经济">经济</option>
+
+                                    <option value="文学">文学</option>
+
+                                    <option value="社会科学">社会科学</option>
+
+                                    <option value="艺术">艺术</option>
+
+                                    <option value="历史">历史</option>
+
+                                    <option value="童话">童话</option>
+
+                                    <option value="政治理论">政治理论</option>
+
+                                    <option value="小说">小说</option>
+
+                                    <option value="管理学">管理学</option>
+
+                                    <option value="心理">心理</option>
+
+                                    <option value="计算机">计算机</option>
+
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="field">作者：</td>
+                            <td><input id="writer" type="text" class="text" name="writer"/></td>
+                        </tr>
+                        <tr>
+                            <td class="field">出版社：</td>
+                            <td><input id="printer" type="text" class="text" name="printer"/></td>
+                        </tr>
+                        <tr>
+                            <td class="field">库存：</td>
+                            <td><input id="stock" type="text" class="text tiny" name="stock"/></td>
+                        </tr>
+                    </table>
+                </form>
+
+
+            </div>
+            <div class="modal-footer">
+                <button id="booksSub2" type="button" class="btn btn-primary"> 　提交　</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">　关闭　</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+
+<script src="assets/js/core/jquery.3.2.1.min.js"></script>
+<script src="assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+<script src="assets/js/core/popper.min.js"></script>
+<script src="assets/js/core/bootstrap.min.js"></script>
+<script src="assets/js/plugin/chartist/chartist.min.js"></script>
+<script src="assets/js/plugin/chartist/plugin/chartist-plugin-tooltip.min.js"></script>
+<!--<script src="assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>-->
+<script src="assets/js/plugin/bootstrap-toggle/bootstrap-toggle.min.js"></script>
+<script src="assets/js/plugin/jquery-mapael/jquery.mapael.min.js"></script>
+<script src="assets/js/plugin/jquery-mapael/maps/world_countries.min.js"></script>
+<script src="assets/js/plugin/chart-circle/circles.min.js"></script>
+<script src="assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+<script src="assets/js/ready.min.js"></script>
+<!--<script src="assets/js/demo.js"></script>-->
+
+<!-- Data Tables -->
+<script src="http://cdn.bootcss.com/datatables/1.10.11/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+<script src="http://cdn.bootcss.com/datatables/1.10.11/js/dataTables.bootstrap.min.js"></script>
+<script src="assets/dropzone/dropzone.js"></script>
+<script src="https://cdn.bootcss.com/jquery.serializeJSON/2.8.0/jquery.serializejson.min.js"></script>
+
+
+<!--图书封面上传 js-->
+<script type="text/javascript">
+    Dropzone.autoDiscover = false;
+    $(document).ready(function () {
+        var appElement = document.querySelector('div .inmodal');
+        var myDropzone = new Dropzone("#dropz", {
+            url: "/upload/image",//文件提交地址
+            method: "post",  //也可用put
+            paramName: "file", //默认为file
+            maxFiles: 1,//一次性上传的文件数量上限
+            maxFilesize: 2, //文件大小，单位：MB
+            acceptedFiles: ".jpg,.gif,.png,.jpeg", //上传的类型
+            addRemoveLinks: true,
+            parallelUploads: 1,//一次上传的文件数量
+            //previewsContainer:"#preview",//上传图片的预览窗口
+            dictDefaultMessage: '图片封面',
+            dictMaxFilesExceeded: "您最多只能上传1个文件！",
+            dictResponseError: '文件上传失败!',
+            dictInvalidFileType: "文件类型只能是*.jpg,*.gif,*.png,*.jpeg。",
+            dictFallbackMessage: "浏览器不受支持",
+            dictFileTooBig: "文件过大上传文件最大支持.",
+            dictRemoveLinks: "删除",
+            dictCancelUpload: "取消",
+            init: function () {
+                this.on("addedfile", function (file) {
+                    //上传文件时触发的事件
+                    document.querySelector('div .dz-default').style.display = 'none';
+                });
+                this.on("success", function (file, data) {
+                    //上传成功触发的事件
+                    console.log('ok');
+                    $("#file_id").val(data.name);
+                });
+                this.on("error", function (file, data) {
+                    //上传失败触发的事件
+                    console.log('fail');
+                    var message = '';
+                    //lavarel框架有一个表单验证，
+                    //对于ajax请求，JSON 响应会发送一个 422 HTTP 状态码，
+                    //对应file.accepted的值是false，在这里捕捉表单验证的错误提示
+                    if (file.accepted) {
+                        $.each(data, function (key, val) {
+                            message = message + val[0] + ';';
+                        })
+                        //控制器层面的错误提示，file.accepted = true的时候；
+                        alert(message);
+                    }
+                });
+                this.on("removedfile", function (file) {
+                    //删除文件时触发的方法
+                    var file_id = angular.element(appElement).scope().file_id;
+                    if (file_id) {
+                        $.post('/admin/del/' + file_id, {'_method': 'DELETE'}, function (data) {
+                            console.log('删除结果:' + data.message);
+                        })
+                    }
+                    angular.element(appElement).scope().file_id = 0;
+                    document.querySelector('div .dz-default').style.display = 'block';
+                });
+            }
+        });
+    })
+
+</script>
+
+</body>
+
+
+<!--jQuery DataTables 实现分页 js-->
+<script>
+    $(function () {
+        //提示信息
+        var lang = {
+            "sProcessing": "处理中...",
+            "sLengthMenu": "每页 _MENU_ 项",
+            "sZeroRecords": "没有匹配结果",
+            "sInfo": "当前显示第 _START_ 至 _END_ 项，共 _TOTAL_ 项。",
+            "sInfoEmpty": "当前显示第 0 至 0 项，共 0 项",
+            "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
+            "sInfoPostFix": "",
+            "sSearch": "搜索:",
+            "sUrl": "",
+            "sEmptyTable": "表中数据为空",
+            "sLoadingRecords": "载入中...",
+            "sInfoThousands": ",",
+            "oPaginate": {
+                "sFirst": "首页",
+                "sPrevious": "上页",
+                "sNext": "下页",
+                "sLast": "末页",
+                "sJump": "跳转"
+            },
+            "oAria": {
+                "sSortAscending": ": 以升序排列此列",
+                "sSortDescending": ": 以降序排列此列"
+            }
+        };
+
+        //初始化表格
+        var table = $("#example").dataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                {
+                    text: '删除',
+                    action: function (e, dt, node, config) {
+                        //dt.ajax.reload();
+                        var arr = new Array();
+                        //var ids = "";
+                        $("input:checkbox[name=booksId]:checked").each(function (key, value) {
+                            arr[key] = $(value).val();
+                            //ids += ","+value;
+                        });
+                        //alert(ids);
+                        if (arr.length == 0) {
+                            alert("请选择需要删除的商品!");
+                        } else {
+                            /* 封装请求参数 */
+                            var param = {};
+                            param.booksIds = arr;
+                            alert("所有选中的图书ID:" + arr.join(","));
+                            $.ajax({
+                                type: "POST",
+                                url: "/books/delete",
+                                contentType: "application/json; charset=utf-8",
+                                cache: false,  //禁用缓存
+                                data: JSON.stringify(param),  //传入组装的参数
+                                dataType: "json",
+                                success: function (result) {
+                                    if (result.code != "200") {
+                                        alert(result.msg);
+                                    } else {
+                                        alert("删除成功!");
+                                        //刷新显示当前页面
+                                        dt.ajax.reload(null, false);
+                                    }
+                                }
+                            });
+                        }
+                    }
+                },
+                {
+                    text: '新增',
+                    action: function (e, dt, node, config) {
+                        //dt.ajax.reload();
+                        $("#myModal").modal("show");
+                    }
+                }
+            ],
+            language: lang,  //提示信息
+            autoWidth: false,  //禁用自动调整列宽
+            stripeClasses: ["odd", "even"],  //为奇偶行加上样式，兼容不支持CSS伪类的场合
+            processing: true,  //隐藏加载提示,自行处理
+            serverSide: true,  //启用服务器端分页
+            searching: true,  //禁用原生搜索
+            orderMulti: false,  //启用多列排序
+            // order: ['1','asc'],  // [] 取消默认排序查询,否则复选框一列会出现小箭头
+            ordering: false,     // 字段排序
+            renderer: "bootstrap",  //渲染样式：Bootstrap和jquery-ui
+            pagingType: "full_numbers",  //分页样式：simple,simple_numbers,full,full_numbers
+            //渲染
+            columnDefs: [
+                {
+                    "render": function (data, type, row, meta) {
+                        // return "<input type='checkbox' name='uid' value='" + data + "'>"+data;
+                        return "<label class=\"form-check-label\">" +
+                            "<input name=\"booksId\" class=\"form-check-input task-select\" " +
+                            "onclick='booksChange()' type=\"checkbox\" value='" + data + "'><span class=\"form-check-sign\"></span></label>";
+                    },
+                    "targets": 0, //指定渲染列：第一列(渲染第一列为单选框，data自动匹配为  {"data":"id"}中数据）‘
+
+                },
+
+                {
+                    "render": function (data, type, row, meta) {
+                        // return "<button type=\"button\" class=\"btn btn-block btn-default\" onclick='goodsModify(" + meta.row + ")'>修改</button>";
+                        return "<button type=\"button\" data-toggle=\"tooltip\" title=\"Edit Task\" class=\"btn btn-link <btn-simple-primary\" " +
+                            "onclick='booksModify("+meta.row+")'>" + "<i class=\"la la-edit\"></i></button>"
+                    },
+                    "targets": 8 //指定渲染列：第八列
+                },
+
+                {
+                    "targets": [0, 5, 6, 7, 8],    //指定列不排序
+                    "orderable": false
+                },
+
+                {
+                    "targets": 'nosort',  //列的样式名
+                    "orderable": false    //包含上样式名‘nosort’的禁止排序
+                }],
+            ajax: function (data, callback, settings) {
+                //封装请求参数
+                var param = {};
+                param.pageSize = data.length; //页面显示记录条数，在页面显示每页显示多少项的时候
+                param.start = data.start;    //开始的记录序号
+                param.pageNum = (data.start / data.length) + 1;//当前页码
+
+                //商品搜索
+                if (data.search.value != "") {
+                    param.search = data.search.value;
+                }
+                //数据排序（取消）
+                // if (data.order.length > 0) {
+                //     param.order = data.order[0].column;
+                //     param.dir = data.order[0].dir;
+                // }
+                //console.log(param);
+                //ajax请求数据
+                $.ajax({
+                    type: "POST",
+                    url: "/books/list",
+                    contentType: "application/json; charset=utf-8",
+                    cache: false,  //禁用缓存
+                    data: JSON.stringify(param),  //传入组装的参数
+                    dataType: "json",
+                    success: function (result) {
+                        //console.log(result);
+                        //setTimeout仅为测试延迟效果
+                        setTimeout(function () {
+                            //封装返回数据
+                            var returnData = {};
+                            returnData.draw = data.draw;//这里直接自行返回了draw计数器,应该由后台返回
+                            returnData.recordsTotal = result.data.totalRecord;//返回数据全部记录
+                            returnData.recordsFiltered = result.data.totalRecord;//后台不实现过滤功能，每次查询均视作全部结果
+                            returnData.data = result.data.data;    //返回的数据列表
+                            //console.log(returnData);
+                            //调用DataTables提供的callback方法，代表数据已封装完成并传回DataTables进行渲染
+                            //此时的数据需确保正确无误，异常判断应在执行此回调前自行处理完毕
+                            callback(returnData);
+                        }, 200);
+                    }
+                });
+            },
+            //列表表头字段
+            columns: [
+                {"data": "bid"},
+                {"data": "bid"},
+                {"data": "bname"},
+                {"data": "pirce"},
+                {"data": "writer"},
+                {"data": "printer"},
+                {"data": "type"},
+                {"data": "stock"},
+                {"": ""}
+            ]
+        }).api();
+        //此处需调用api()方法,否则返回的是JQuery对象而不是DataTables的API对象
+    });
+
+</script>
+<script>
+    $(function () {
+        $(".dt-button").addClass("btn btn-primary btn-border btn-round");
+    });
+
+    // 实现 checkbox 分选与全选绑定
+    function booksChange() {
+        if ($(this).is(":checked")) {
+            $("#allElection").prop("checked", true);
+        } else {
+            $("#allElection").prop("checked", false);
+        }
+        if ($("input:checkbox[name=booksId]:checked").length == $("input:checkbox[name=booksId]").length) {
+            $("#allElection").prop("checked", true);
+        }
+    }
+
+
+    //修改图书信息
+    function booksModify(index) {
+
+        // debugger
+        //获取datatables对象
+        var table = $("#example").dataTable();
+        //获取datatables表格数据
+        var nodes = table.fnGetNodes();
+        //获取datatables表格指定行数据
+        var row = table.fnGetData(nodes[index]);
+        $("#bid").val(row.bid);
+        $("#bname").val(row.bname);
+        $("#pirce").val(row.pirce);
+        $("#writer").val(row.writer);
+        $("#printer").val(row.printer);
+        $("#type").val(row.type);
+        $("#stock").val(row.stock);
+        $("#myModal2").modal("show");
+    }
+
+    //提交新增图书信息
+    $(document).ready(function () {
+        $("#booksSub").click(function () {
+            var data = $('#booksFrm').serializeJSON();
+            $.ajax({
+                type: "POST",
+                url: "/books/add",
+                contentType: "application/json; charset=utf-8",
+                cache: false,  //禁用缓存
+                data: JSON.stringify(data),  //传入组装的参数
+                dataType: "json",
+                success: function (result) {
+                    if (result.code != "200") {
+                        alert(result.msg);
+                    } else {
+                        alert("恭喜你,添加成功!");
+                        var table = $('#example').DataTable();
+                        table.ajax.reload(null, false);
+                        $("#myModal").modal("toggle");
+                    }
+                }
+            });
+        });
+
+
+        //提交修改图书信息
+        $("#booksSub2").click(function () {
+            debugger
+            var data = $('#booksFrm2').serializeJSON();
+            $.ajax({
+                type: "POST",
+                url: "/books/modify",
+                contentType: "application/json; charset=utf-8",
+                cache: false,  //禁用缓存
+                data: JSON.stringify(data),  //传入组装的参数
+                dataType: "json",
+                success: function (result) {
+                    if (result.code != "200") {
+                        alert(result.msg);
+                    } else {
+                        alert("恭喜你,修改成功!");
+                        var table = $('#example').DataTable();
+                        table.ajax.reload(null, false);
+                        $("#myModal2").modal("toggle");
+                    }
+                }
+            });
+        });
+    });
+
+</script>
+
+</html>

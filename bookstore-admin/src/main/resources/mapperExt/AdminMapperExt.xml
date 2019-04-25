@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bookstore.dao.mapping.ext.AdminMapperExt">
+
+    <resultMap id="BaseResultMap" type="com.bookstore.dao.pojo.User"
+               extends="com.bookstore.dao.mapping.UserMapper.BaseResultMap">
+    </resultMap>
+
+
+    <delete id="userDelete">
+        delete from user where uid in
+        <foreach collection="userIds" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </delete>
+
+    <insert id="userAdd" parameterType="com.bookstore.domain.UserAddEntity">
+
+      insert into user(uname,password,gender,email,phone,salt)
+      values(
+      #{userAddEntity.uname},#{userAddEntity.password},#{userAddEntity.gender},#{userAddEntity.email},#{userAddEntity.phone},#{userAddEntity.salt}
+      )
+    </insert>
+
+
+</mapper>

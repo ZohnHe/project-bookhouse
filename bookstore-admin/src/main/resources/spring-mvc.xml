@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <description>Spring MVC Configuration</description>
+
+    <!-- 加载配置属性文件 -->
+    <!--  <context:property-placeholder ignore-unresolvable="true" location="classpath:config.properties"/> -->
+
+    <!-- 使用 Annotation 自动注册 Bean,只扫描 @Controller -->
+    <context:component-scan base-package="com.bookstore.controller"/>
+
+    <!-- 配置注解驱动 可以将request参数与绑定到controller参数上 -->
+    <mvc:annotation-driven />
+    <mvc:default-servlet-handler />
+
+
+    <!-- html视图解析器 必须先配置freemarkerConfig,注意html是没有prefix前缀属性的-->
+    <bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+        <property name="templateLoaderPath">
+            <value>/static</value>
+        </property>
+        <property name="defaultEncoding" value="UTF-8" />
+    </bean>
+    <bean id="htmlviewResolver"
+          class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+        <property name="suffix" value=".html" />
+        <property name="order" value="0"></property>
+        <property name="contentType" value="text/html;charset=UTF-8"></property>
+    </bean>
+
+    <!-- 定义视图解析器 -->
+    <!--<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">-->
+        <!--&lt;!&ndash; 这里的配置我的理解是自动给后面action的方法return的字符串加上前缀和后缀，变成一个 可用的url地址 &ndash;&gt;-->
+        <!--<property name="prefix" value="/WEB-INF/views/jsp/" />-->
+        <!--<property name="suffix" value=".jsp" />-->
+        <!--<property name="viewClass" value="org.springframework.web.servlet.view.InternalResourceView"/> &lt;!&ndash; 不能用jstl的那个 &ndash;&gt;-->
+        <!--<property name="contentType" value="text/html;charset=UTF-8"/>-->
+        <!--<property name="order" value="1"></property>-->
+    <!--</bean>-->
+
+    <!-- 静态资源映射 -->
+    <mvc:resources mapping="/static/**" location="/static/" cache-period="31536000"/>
+
+    <!-- 拦截器配置，拦截顺序：先执行后定义的，排在第一位的最后执行。-->
+    <!--<mvc:interceptors>-->
+        <!--<mvc:interceptor>-->
+            <!--<mvc:mapping path="/api/**"/>-->
+            <!--<mvc:exclude-mapping path="/static/**"/>-->
+            <!--<mvc:exclude-mapping path="/api/user/login"/>-->
+            <!--<mvc:exclude-mapping path="/api/user/salt"/>-->
+            <!--&lt;!&ndash;<mvc:exclude-mapping path="/index"/>&ndash;&gt;-->
+            <!--<mvc:exclude-mapping path="/swagger-ui.html"/>-->
+            <!--<mvc:exclude-mapping path="/swagger-resources/**"/>-->
+            <!--<mvc:exclude-mapping path="/webjars/**"/>-->
+            <!--<mvc:exclude-mapping path="/v2/**"/>-->
+            <!--<bean class="com.bookstore.interceptor.LoginInterceptor"/>-->
+        <!--</mvc:interceptor>-->
+
+    <!--</mvc:interceptors>-->
+
+
+
+    <!-- 自定义错误处理，将错误转换为系统可识别的输出方式 -->
+    <bean class="com.bookstore.exception.MyExceptionResolver">
+    </bean>
+
+    <!-- Swagger 文档配置类 -->
+    <bean class="com.bookstore.swagger.SpringfoxDocConfig"></bean>
+
+    <!-- SpringMVC上传文件时，需要配置MultipartResolver处理器(流式) -->
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- 上传文件大小上限，单位为字节（10MB） -->
+        <property name="maxUploadSize">
+            <value>10485760</value>
+        </property>
+        <!-- 请求的编码格式，必须和jSP的pageEncoding属性一致，以便正确读取表单的内容，默认为ISO-8859-1 -->
+        <property name="defaultEncoding">
+            <value>UTF-8</value>
+        </property>
+    </bean>
+
+</beans>

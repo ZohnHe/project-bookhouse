@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>书屋 | BookHouse</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="aStar Fashion Template Project">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/static/ui/assets/styles/bootstrap-4.1.3/bootstrap.css">
+    <link href="/static/ui/assets/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="/static/ui/assets/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="/static/ui/assets/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+    <link rel="stylesheet" type="text/css" href="/static/ui/assets/plugins/OwlCarousel2-2.2.1/animate.css">
+    <link rel="stylesheet" type="text/css" href="/static/ui/assets/styles/main_styles.css">
+    <link rel="stylesheet" type="text/css" href="/static/ui/assets/styles/responsive.css">
+</head>
+<style>
+    .loginBox {
+        display: none;
+    }
+    .loginName {
+        display: none;
+    }
+    .bookCart{
+        display: none!important;
+    }
+</style>
+<body>
+
+<div class="super_container">
+
+    <!-- Header -->
+
+    <header class="header">
+        <div class="header_content d-flex flex-row align-items-center justify-content-start">
+
+            <!-- Hamburger -->
+            <div class="hamburger menu_mm"><i class="fa fa-bars menu_mm" aria-hidden="true"></i></div>
+
+            <!-- Logo -->
+            <div class="header_logo">
+                <a href="/user/toIndex"><div><span>Book</span>house</div></a>
+            </div>
+
+            <!-- Navigation -->
+            <nav class="header_nav">
+                <ul class="d-flex flex-row align-items-center justify-content-start">
+                    <li><a href="/user/toIndex">主页</a></li>
+                    <li><a href="/user/toSort">新书推荐</a></li>
+                    <li><a href="/user/toSort">畅销书</a></li>
+                    <li><a href="/user/toSort">电子书</a></li>
+                    <li><a href="/user/toSort">网络文学</a></li>
+                    <li>
+                    <div class=" has_children">
+                        <div class="dropdown_text">其他分类</div>
+                        <div class="dropdown_arrow"><i class="fa fa-angle-down" aria-hidden="true"></i></div>
+                        <ul>
+                            <li><a href="/user/toSort"><div class="dropdown_text">治愈</div></a></li>
+                            <li><a href="/user/toSort"><div class="dropdown_text">经济</div></a></li>
+                            <li><a href="/user/toSort"><div class="dropdown_text">文学</div></a></li>
+                            <li><a href="/user/toSort"><div class="dropdown_text">社会</div></a></li>
+                            <li><a href="/user/toSort"><div class="dropdown_text">艺术</div></a></li>
+                            <li><a href="/user/toSort"><div class="dropdown_text">历史</div></a></li>
+                            <li><a href="/user/toSort"><div class="dropdown_text">童话</div></a></li>
+                            <li><a href="/user/toSort"><div class="dropdown_text">政治</div></a></li>
+                            <li><a href="/user/toSort"><div class="dropdown_text">小说</div></a></li>
+                            <li><a href="/user/toSort"><div class="dropdown_text">管理学</div></a></li>
+                            <li><a href="/user/toSort"><div class="dropdown_text">心理学</div></a></li>
+                            <li><a href="/user/toSort"><div class="dropdown_text">计算机</div></a></li>
+                        </ul>
+                    </div>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- 中等宽 -->
+            <div class="header_extra ml-auto d-flex flex-row align-items-center justify-content-start">
+
+                <div class="info_languages has_children loginBox" onclick="location.href='toLogin';">
+                    <div class="dropdown_text">登录</div>
+                </div>
+                <div class="info_currencies has_children loginBox" style="margin-right: 40px;" onclick="location.href='toRegister';">
+                    <div class="dropdown_text">注册</div>
+                </div>
+
+                <!-- 登录后 -->
+                <div class="info_currencies has_children loginName">欢迎回来！
+                    <div class="dropdown_text my_thisName">用户</div>
+                    <div class="dropdown_arrow"><i class="fa fa-angle-down" aria-hidden="true"></i></div>
+                    <ul>
+                        <li><a href="#"><div class="dropdown_text">个人信息</div></a></li>
+                        <li><a href="#"><div class="dropdown_text">用户设置</div></a></li>
+                        <li><a href="#"><div class="dropdown_text">修改密码</div></a></li>
+                        <li><a href="#"><div class="dropdown_text out_login">退出登录</div></a></li>
+
+                    </ul>
+                </div>
+
+                <!-- Cart -->
+                <div class="cart d-flex flex-row align-items-center justify-content-start bookCart">
+                    <div class="cart_icon"><a href="/user/toCart">
+                        <img src="/static/ui/assets/images/bag.png" alt="">
+                        <div class="cart_num">99+</div>
+                    </a></div>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- 小菜单 -->
+
+    <div class="menu d-flex flex-column align-items-start justify-content-start menu_mm trans_400">
+        <div class="menu_close_container"><div class="menu_close"><div></div><div></div></div></div>
+        <div class="menu_top d-flex flex-row align-items-center justify-content-start">
+            <!-- Login -->
+            <div class="has_children loginBox">
+                <div class="header_logo">
+                    <a href="/user/toLogin"><div><span>登录</span></div></a>
+                </div>
+            </div>
+            <!-- Register -->
+            <div class="info_currencies has_children loginBox" style="padding-bottom: 0;">
+                <div class="header_logo">
+                    <a href="/user/toRegister"><div><span>注册</span></div></a>
+                </div>
+            </div>
+
+            <!-- 登录后 -->
+            <div class="info_currencies has_children loginName">
+                <div class="dropdown_text my_thisName">用户</div>
+                <div class="dropdown_arrow"><i class="fa fa-angle-down" aria-hidden="true"></i></div>
+                <ul style="width: 110%">
+                    <li><a href="#"><div class="dropdown_text">个人信息</div></a></li>
+                    <li><a href="#"><div class="dropdown_text">用户设置</div></a></li>
+                    <li><a href="#"><div class="dropdown_text">修改密码</div></a></li>
+                    <li><a href="#"><div class="dropdown_text out_login">退出登录</div></a></li>
+
+                </ul>
+            </div>
+
+        </div>
+        <div class="menu_search">
+            <form action="#" class="header_search_form menu_mm">
+                <input type="search" class="search_input menu_mm" placeholder="搜索书籍" required="required">
+                <button class="header_search_button d-flex flex-column align-items-center justify-content-center menu_mm">
+                    <i class="fa fa-search menu_mm" aria-hidden="true"></i>
+                </button>
+            </form>
+        </div>
+        <nav class="menu_nav">
+            <ul class="menu_mm">
+                <li class="menu_mm my_nav_class"><a href="/user/toIndex">主页</a></li><br/>
+                <li class="menu_mm my_nav_class"><a href="/user/toSort">新书推荐</a></li><br/>
+                <li class="menu_mm my_nav_class"><a href="/user/toSort">畅销书</a></li><br/>
+                <li class="menu_mm my_nav_class"><a href="/user/toSort">电子书</a></li><br/>
+                <li class="menu_mm my_nav_class"><a href="/user/toSort">网络文学</a></li><br/>
+                <li class="menu_mm my_nav_class"><a href="/user/toSort">其他分类</a></li><br/>
+            </ul>
+        </nav>
+        <div class="menu_extra">
+            <div class="menu_social">
+                <ul>
+                    <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+                    <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                    <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                    <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 大屏幕 -->
+
+    <div class="sidebar">
+
+        <!-- Info -->
+        <div class="info">
+            <div class="info_content d-flex flex-row align-items-center justify-content-start">
+                <!-- 登录 -->
+                <div class="info_languages has_children loginBox">
+                    <div class="dropdown_text" onclick="location.href='toLogin';">登录</div>
+                </div>
+
+                <!-- Currency -->
+                <div class="info_currencies has_children loginBox" style="margin-right: 40px;" onclick="location.href='toRegister';">
+                    <div class="dropdown_text">注册</div>
+                </div>
+
+                <!-- 登录后 -->
+                <div class="info_currencies has_children loginName">欢迎回来！
+                    <div class="dropdown_text my_thisName">用户</div>
+                    <div class="dropdown_arrow"><i class="fa fa-angle-down" aria-hidden="true"></i></div>
+                    <ul>
+                        <li><a href="#"><div class="dropdown_text">个人信息</div></a></li>
+                        <li><a href="#"><div class="dropdown_text">用户设置</div></a></li>
+                        <li><a href="#"><div class="dropdown_text">修改密码</div></a></li>
+                        <li><a href="#"><div class="dropdown_text out_login">退出登录</div></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Logo -->
+        <div class="sidebar_logo">
+            <a href="/user/toIndex"><div><span>书</span>屋</div></a>
+        </div>
+
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar_nav">
+            <ul>
+                <li class="my_nav_class"><a href="/user/toIndex">主页<i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+                <li class="my_nav_class"><a href="/user/toSort">新书推荐<i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+                <li class="my_nav_class"><a href="/user/toSort">畅销书<i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+                <li class="my_nav_class"><a href="/user/toSort">电子书<i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+                <li class="my_nav_class"><a href="/user/toSort">网络文学<i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+                <li class="my_nav_class"><a href="/user/toSort">其他分类<i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+            </ul>
+        </nav>
+
+        <!-- Search -->
+        <div class="search">
+            <form action="#" class="search_form" id="sidebar_search_form">
+                <input type="text" class="search_input" placeholder="搜索书籍" required="required">
+                <button class="search_button"><i class="fa fa-search" aria-hidden="true"></i></button>
+            </form>
+        </div>
+
+        <!-- Cart -->
+        <div class="bookCart cart d-flex flex-row align-items-center justify-content-start">
+            <div class="cart_icon"><a href="/user/toCart">
+                <img src="/static/ui/assets/images/bag.png" alt="">
+                <div class="cart_num">99</div>
+            </a></div>
+            <!--<div class="cart_text">购物车</div>-->
+            <div class="cart_price">￥998 (1)</div>
+        </div>
+    </div>
+
+    <!-- Home -->
+
+    <div class="home">
+
+        <!-- Home Slider -->
+        <div class="home_slider_container">
+            <div class="owl-carousel owl-theme home_slider">
+
+                <!-- Slide -->
+                <div class="owl-item">
+                    <div class="background_image" style="background-image:url('/static/ui/assets/images/home_3.jpg')"></div>
+                    <div class="home_content_container">
+                        <div class="home_content">
+                            <div class="button button_1 home_button trans_200"><a href="/user/toSort">立即抢购&nbsp;&nbsp;></a></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 轮播图未定Slide -->
+                <!--<div class="owl-item">-->
+                    <!--<div class="background_image" style="background-image:url(images/home_slider_1.jpg)"></div>-->
+                    <!--<div class="home_content_container">-->
+                        <!--<div class="home_content">-->
+                            <!--<div class="home_discount d-flex flex-row align-items-end justify-content-start">-->
+                                <!--<div class="home_discount_num">20</div>-->
+                                <!--<div class="home_discount_text">Discount on the</div>-->
+                            <!--</div>-->
+                            <!--<div class="home_title">New Collection</div>-->
+                            <!--<div class="button button_1 home_button trans_200"><a href="categories.html">Shop NOW!</a></div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+            </div>
+
+            <!-- Home Slider Navigation -->
+            <div class="home_slider_nav home_slider_prev trans_200"><div class=" d-flex flex-column align-items-center justify-content-center"><img src="/static/ui/assets/images/prev.png" alt=""></div></div>
+            <div class="home_slider_nav home_slider_next trans_200"><div class=" d-flex flex-column align-items-center justify-content-center"><img src="/static/ui/assets/images/next.png" alt=""></div></div>
+
+        </div>
+    </div>
+
+    <!-- Boxes -->
+    <div class="boxes">
+        <div class="section_container">
+            <div class="container">
+                <div class="row">
+
+                    <!-- Box -->
+                    <div class="col-lg-4 box_col">
+                        <div class="box">
+                            <div class="box_image" onclick="location.href='http://book.dangdang.com/20190107_i315'"><img src="/static/ui/assets/images/apicd1.jpg" alt=""></div>
+                        </div>
+                    </div>
+
+                    <!-- Box -->
+                    <div class="col-lg-4 box_col">
+                        <div class="box">
+                            <div class="box_image" onclick="location.href='http://store.dangdang.com/gys_04682_zhmz'"><img src="/static/ui/assets/images/apicd2.jpg" alt=""></div>
+                        </div>
+                    </div>
+
+                    <!-- Box -->
+                    <div class="col-lg-4 box_col">
+                        <div class="box">
+                            <div class="box_image" onclick="location.href='http://baby.dangdang.com/20199910'"><img src="/static/ui/assets/images/apicd3.png" alt=""></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Categories -->
+
+    <div class="categories">
+        <div class="section_container">
+            <div class="container">
+                <div class="row">
+                    <div class="col text-center">
+                        <div class="categories_list_container">
+                            <ul class="categories_list d-flex flex-row align-items-center justify-content-start">
+                                <li><a href="/user/toSort">新书畅销</a></li>
+                                <li><a href="/user/toSort">图书热卖</a></li>
+                                <li><a href="/user/toSort">作者榜单</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Products -->
+
+    <div class="products">
+        <div class="section_container">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col">
+                        <div class="products_container grid">
+                            <!-- Product -->
+                            <div class="product grid-item sale">
+                                <div class="product_inner my_click">
+                                    <input type="hidden" name="" value="46">
+                                    <div class="product_image">
+                                        <img src="/static/ui/assets/images/becoming.jpg" alt="">
+                                    </div>
+                                    <div class="product_content text-center">
+                                        <div class="product_title"><a href="#">成为 Becoming</a></div>
+                                        <p class="author">米歇尔·奥巴马</p>
+                                        <div class="product_price">￥70.60<span> 89.00</span></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Product -->
+                            <div class="product grid-item sale">
+                                <div class="product_inner my_click">
+                                    <input type="hidden" name="" value="47">
+                                    <div class="product_image">
+                                        <img src="/static/ui/assets/images/shanggu.jpg" alt="">
+                                    </div>
+                                    <div class="product_content text-center">
+                                        <div class="product_title"><a href="#">夏摩山谷</a></div>
+                                        <p class="author">庆山（安妮宝贝）</p>
+                                        <div class="product_price">￥29.00<span> 58.00</span></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Product -->
+                            <div class="product grid-item sale">
+                                <div class="product_inner my_click">
+                                    <input type="hidden" name="" value="48">
+                                    <div class="product_image">
+                                        <img src="/static/ui/assets/images/woaishijie.jpg" alt="">
+                                    </div>
+                                    <div class="product_content text-center">
+                                        <div class="product_title"><a href="#">三分欣喜七分哀伤的世界</a></div>
+                                        <p class="author">纪伯伦</p>
+                                        <div class="product_price">￥19.50<span> 39.80</span></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Product -->
+                            <div class="product grid-item sale">
+                                <div class="product_inner my_click">
+                                    <input type="hidden" name="" value="49">
+                                    <div class="product_image">
+                                        <img src="/static/ui/assets/images/yishigang.jpg" alt="">
+                                    </div>
+                                    <div class="product_content text-center">
+                                        <div class="product_title"><a href="#">生活需要仪式感</a></div>
+                                        <p class="author">李思园</p>
+                                        <div class="product_price">￥19.50<span> 39.80</span></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Product -->
+                            <div class="product grid-item sale">
+                                <div class="product_inner my_click">
+                                    <input type="hidden" name="" value="50">
+                                    <div class="product_image">
+                                        <img src="/static/ui/assets/images/shijielishi.jpg" alt="">
+                                    </div>
+                                    <div class="product_content text-center">
+                                        <div class="product_title"><a href="#">世界历史</a></div>
+                                        <p class="author">陈卫平</p>
+                                        <div class="product_price" style="color: #414141">￥206.4</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Product -->
+                            <div class="product grid-item sale">
+                                <div class="product_inner my_click">
+                                    <input type="hidden" name="" value="51">
+                                    <div class="product_image">
+                                        <img src="/static/ui/assets/images/java.jpg" alt="">
+                                    </div>
+                                    <div class="product_content text-center">
+                                        <div class="product_title"><a href="#">Java从入门到入土</a></div>
+                                        <p class="author">明日科技</p>
+                                        <div class="product_price">￥61.2<span> 69.60</span></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Product -->
+                            <div class="product grid-item sale">
+                                <div class="product_inner  my_click">
+                                    <input type="hidden" name="" value="52">
+                                    <div class="product_image">
+                                        <img src="/static/ui/assets/images/shijian.jpg" alt="">
+                                    </div>
+                                    <div class="product_content text-center">
+                                        <div class="product_title"><a href="">时间的礼物</a></div>
+                                        <p class="author">[瑞典]弗雷德里克·巴克曼</p>
+                                        <div class="product_price">￥18.00<span> 36.00</span></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Product -->
+                            <div class="product grid-item sale">
+                                <div class="product_inner my_click">
+                                    <input type="hidden" name="" value="53">
+                                    <div class="product_image">
+                                        <img src="/static/ui/assets/images/fangao.jpg" alt="">
+                                    </div>
+                                    <div class="product_content text-center">
+                                        <div class="product_title"><a href="">余光中讲梵高</a></div>
+                                        <p class="author">余光中</p>
+                                        <div class="product_price">￥49.50<span> 99.00</span></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Newsletter -->
+
+    <div class="newsletter">
+        <div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="/static/ui/assets/images/newsletter.jpg" data-speed="0.8"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2">
+                    <div class="newsletter_content text-center">
+                        <div class="newsletter_title_container">
+                            <div class="newsletter_title">订阅我们的网站</div>
+                            <div class="newsletter_subtitle">当有活动更新会第一时间提醒您！</div>
+                        </div>
+                        <div class="newsletter_form_container">
+                            <form action="#" id="newsletter_form" class="newsletter_form">
+                                <input type="email" class="newsletter_input" placeholder="请在这里输入您的邮箱" required="required">
+                                <button class="newsletter_button" onclick="alert('提交成功！');">提交</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+
+    <footer class="footer" style="background-color: #fff">
+        <div class="footer_content">
+            <div class="section_container">
+                <div class="container">
+                    <div class="row">
+
+                        <!-- About -->
+                        <div class="col-xxl-3 col-md-6 footer_col">
+                            <div class="footer_about">
+                                <!-- Logo -->
+                                <div class="footer_logo">
+                                    <!--<a href="#"><div><span>Book</span>house</div></a>-->
+                                    <img src="/static/ui/assets/images/bookhouse.png">
+                                </div>
+                                <div class="footer_about_text">
+                                    <p>该网站致力于在中国大陆装最好的逼<br/> 如有雷同<br/>纯属是我抄袭的</p>
+                                </div>
+                                <div class="cards">
+                                    <ul class="d-flex flex-row align-items-center justify-content-start">
+                                        <li><a href="#"><img src="/static/ui/assets/images/card_1.jpg" alt=""></a></li>
+                                        <li><a href="#"><img src="/static/ui/assets/images/card_2.jpg" alt=""></a></li>
+                                        <li><a href="#"><img src="/static/ui/assets/images/card_3.jpg" alt=""></a></li>
+                                        <li><a href="#"><img src="/static/ui/assets/images/card_4.jpg" alt=""></a></li>
+                                        <li><a href="#"><img src="/static/ui/assets/images/card_5.jpg" alt=""></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Questions -->
+                        <div class="col-xxl-3 col-md-6 footer_col">
+                            <div class="footer_questions">
+                                <div class="footer_title">问题帮助</div>
+                                <div class="footer_list">
+                                    <ul>
+                                        <li><a href="#">关于我们</a></li>
+                                        <li><a href="#">订单追踪</a></li>
+                                        <li><a href="#">使用条款</a></li>
+                                        <li><a href="#">发票制度</a></li>
+                                        <li><a href="#">配送服务</a></li>
+                                        <li><a href="#">网上支付</a></li>
+                                        <li><a href="#">合作伙伴</a></li>
+                                        <li><a href="#">会员优惠</a></li>
+                                        <li><a href="#">技术支持</a></li>
+                                        <li><a href="#">商家中心</a></li>
+                                        <li><a href="#">运营服务</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Blog -->
+                        <div class="col-xxl-3 col-md-6 footer_col">
+                            <div class="footer_blog">
+                                <div class="footer_title">官方博客</div>
+                                <div class="footer_blog_container">
+
+                                    <!-- Blog Item -->
+                                    <div class="footer_blog_item d-flex flex-row align-items-start justify-content-start">
+                                        <div class="footer_blog_image"><a href="#"><img src="/static/ui/assets/images/footer_blog_1.jpg" alt=""></a></div>
+                                        <div class="footer_blog_content">
+                                            <div class="footer_blog_title"><a href="#">新经典文化</a></div>
+                                            <div class="footer_blog_date">2018-06-13</div>
+                                            <div class="footer_blog_link"><a href="#">了解更多</a></div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Blog Item -->
+                                    <div class="footer_blog_item d-flex flex-row align-items-start justify-content-start">
+                                        <div class="footer_blog_image"><a href="#"><img src="/static/ui/assets/images/footer_blog_2.jpg" alt=""></a></div>
+                                        <div class="footer_blog_content">
+                                            <div class="footer_blog_title"><a href="#">读客文化</a></div>
+                                            <div class="footer_blog_date">2019-02-19</div>
+                                            <div class="footer_blog_link"><a href="#">了解更多</a></div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Contact -->
+                        <div class="col-xxl-3 col-md-6 footer_col">
+                            <div class="footer_contact">
+                                <div class="footer_title">联系我们</div>
+                                <div class="footer_contact_list">
+                                    <ul>
+                                        <li class="d-flex flex-row align-items-start justify-content-start"><span>C.</span><div>文盲书虫有限责任公司</div></li>
+                                        <li class="d-flex flex-row align-items-start justify-content-start"><span>A.</span><div>广州市天河区</div></li>
+                                        <li class="d-flex flex-row align-items-start justify-content-start"><span>T.</span><div>+86 6666 66666</div></li>
+                                        <li class="d-flex flex-row align-items-start justify-content-start"><span>E.</span><div>zohn@super.com</div></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Credits -->
+        <div class="credits">
+            <div class="section_container">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="credits_content d-flex flex-row align-items-center justify-content-end">
+                                <div class="credits_text">
+                                    Copyright &copy;<script>document.write(new Date().getFullYear().toString());</script> - Colorlib All rights reserved | More Info <a href="https://gitee.com/zohnn" target="_blank" title="Zohn">Zohn</a> - Collect from <a href="https://gitee.com/zohnn" title="BookHouse" target="_blank">BookHouse</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<script src="/static/ui/assets/js/jquery-3.2.1.min.js"></script>
+<script src="/static/ui/assets/styles/bootstrap-4.1.3/popper.js"></script>
+<script src="/static/ui/assets/styles/bootstrap-4.1.3/bootstrap.min.js"></script>
+<script src="/static/ui/assets/plugins/greensock/TweenMax.min.js"></script>
+<script src="/static/ui/assets/plugins/greensock/TimelineMax.min.js"></script>
+<script src="/static/ui/assets/plugins/scrollmagic/ScrollMagic.min.js"></script>
+<script src="/static/ui/assets/plugins/greensock/animation.gsap.min.js"></script>
+<script src="/static/ui/assets/plugins/greensock/ScrollToPlugin.min.js"></script>
+<script src="/static/ui/assets/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+<script src="/static/ui/assets/plugins/easing/easing.js"></script>
+<script src="/static/ui/assets/plugins/parallax-js-master/parallax.min.js"></script>
+<script src="/static/ui/assets/plugins/Isotope/isotope.pkgd.min.js"></script>
+<script src="/static/ui/assets/plugins/Isotope/fitcolumns.js"></script>
+<script src="/static/ui/assets/js/custom.js"></script>
+<script src="/static/ui/assets/js/jquery.cookie.js"></script>
+<script src="/static/ui/assets/js/myJs.js"></script>
+
+<script>
+    /**
+     * 添加首页的书籍购买功能
+     */
+    $(function () {
+        $(".product_inner").click(function () {
+            var bid = $(this).find("input").val();
+            location.href='/user/toProduct?bid='+bid
+        })
+    })
+</script>
+</body>
+</html>

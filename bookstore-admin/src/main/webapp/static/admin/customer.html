@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>书屋|用户管理</title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
+          name='viewport'/>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <!--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">-->
+    <link rel="stylesheet" href="assets/css/ready.css">
+    <link rel="stylesheet" href="assets/css/demo.css">
+    <link rel="stylesheet" href="assets/css/my_css.css">
+    <link href="http://cdn.bootcss.com/datatables/1.10.11/css/jquery.dataTables.min.css" rel="stylesheet"
+          media="screen">
+    <link href="http://cdn.bootcss.com/datatables/1.10.11/css/dataTables.bootstrap.min.css" rel="stylesheet"
+          media="screen">
+</head>
+<body>
+<div class="wrapper">
+    <div class="main-header">
+        <div class="logo-header">
+            <a href="index.html" class="logo">
+                BookHouse 后台管理
+            </a>
+            <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse"
+                    data-target="collapse" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <button class="topbar-toggler more"><i class="la la-ellipsis-v"></i></button>
+        </div>
+        <nav class="navbar navbar-header navbar-expand-lg">
+            <div class="container-fluid">
+
+                <form class="navbar-left navbar-form nav-search mr-md-3" action="">
+                    <div class="input-group">
+                        <input type="text" placeholder="查找" class="form-control">
+                        <div class="input-group-append">
+							<span class="input-group-text">
+								<i class="la la-search search-icon"></i>
+							</span>
+                        </div>
+                    </div>
+                </form>
+                <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
+                    <li class="nav-item dropdown hidden-caret">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="la la-envelope"></i>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">站内信</a>
+                            <a class="dropdown-item" href="#">未读邮件</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">设置</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown hidden-caret">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="la la-bell"></i>
+                            <span class="notification">3</span>
+                        </a>
+                        <ul class="dropdown-menu notif-box" aria-labelledby="navbarDropdown">
+                            <li>
+                                <div class="dropdown-title">您有<span>3</span>条未读消息</div>
+                            </li>
+                            <li>
+                                <div class="notif-center">
+                                    <a href="#">
+                                        <div class="notif-icon notif-primary"><i class="la la-user-plus"></i></div>
+                                        <div class="notif-content">
+												<span class="block">
+													新用户注册
+												</span>
+                                            <span class="time">5 分钟前</span>
+                                        </div>
+                                    </a>
+                                    <a href="#">
+                                        <div class="notif-icon notif-success"><i class="la la-comment"></i></div>
+                                        <div class="notif-content">
+												<span class="block">
+													评论管理
+												</span>
+                                            <span class="time">12 分钟前</span>
+                                        </div>
+                                    </a>
+                                    <a href="#">
+                                        <div class="notif-img">
+                                            <img src="assets/img/profile2.jpg" alt="Img Profile">
+                                        </div>
+                                        <div class="notif-content">
+												<span class="block">
+													Zohn
+												</span>
+                                            <span class="time">12 分钟前</span>
+                                        </div>
+                                    </a>
+                                    <a href="#">
+                                        <div class="notif-icon notif-danger"><i class="la la-heart"></i></div>
+                                        <div class="notif-content">
+												<span class="block">
+													老王喜欢了您的评论
+												</span>
+                                            <span class="time">17 分钟前</span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </li>
+                            <li>
+                                <a class="see-all" href="javascript:void(0);"> <strong>查看更多</strong> <i
+                                        class="la la-angle-right"></i> </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
+                            <img src="assets/img/profile.jpg" alt="user-img" width="36"
+                                 class="img-circle"><span>Admin</span></a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li>
+                                <div class="user-box">
+                                    <div class="u-img"><img src="assets/img/profile.jpg" alt="user"></div>
+                                    <div class="u-text">
+                                        <h4>Admin</h4>
+                                        <p class="text-muted">hello@themekita.com</p><a href="profile.html"
+                                                                                        class="btn btn-rounded btn-danger btn-sm">名片展示</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#"><i class="ti-user"></i> 个人信息</a>
+                            <a class="dropdown-item" href="#"></i> 我的发布</a>
+                            <a class="dropdown-item" href="#"><i class="ti-email"></i> 收件箱</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#"><i class="ti-settings"></i> 账户设置 </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#"><i class="fa fa-power-off"></i> 退出</a>
+                        </ul>
+                        <!-- /.dropdown-user -->
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div class="sidebar">
+        <div class="scrollbar-inner sidebar-wrapper">
+            <div class="user">
+                <div class="photo">
+                    <img src="assets/img/profile.jpg">
+                </div>
+                <div class="info">
+                    <a class="" data-toggle="collapse" href="#collapseExample" aria-expanded="true">
+								<span>
+									Admin
+									<span class="user-level">管理员账户</span>
+									<span class="caret"></span>
+								</span>
+                    </a>
+                    <div class="clearfix"></div>
+
+                    <div class="collapse in" id="collapseExample" aria-expanded="true" style="">
+                        <ul class="nav">
+                            <li>
+                                <a href="#profile">
+                                    <span class="link-collapse">个人信息</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#edit">
+                                    <span class="link-collapse">编辑</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#settings">
+                                    <span class="link-collapse">设置</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <ul class="nav">
+                <li class="nav-item">
+                    <a href="index.html">
+                        <i class="la la-dashboard"></i>
+                        <p>后台信息</p>
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a href="customer.html">
+                        <i class="la la-user"></i>
+                        <p>用户</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="books.html">
+                        <i class="la la-book"></i>
+                        <p>书籍</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="order.html">
+                        <i class="la la-th"></i>
+                        <p>订单</p>
+                    </a>
+                </li>
+
+                <li class="nav-item update-pro" onclick="location.href='/static/ui/index.html'">
+                    <button>
+                        <i class="la la-hand-pointer-o"></i>
+                        <p>回到书屋</p>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="main-panel">
+        <div class="content">
+            <div class="container-fluid">
+
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="card card-tasks">
+                            <div class="card-header row">
+                                <div class="col-md-9">
+                                    <h3 class="card-title">用户管理</h3>
+                                </div>
+                            </div>
+                            <div class="card-body ">
+                                <div class="table-full-width">
+                                    <table class="table" id="example">
+                                        <thead>
+                                        <tr>
+                                            <th>
+                                                <label class="form-check-label">
+                                                    <input class="form-check-input  select-all-checkbox"
+                                                           type="checkbox" data-select="checkbox"
+                                                           data-target=".task-select">
+                                                    <span class="form-check-sign"></span>
+                                                </label>
+                                            </th>
+                                            <th>ID</th>
+                                            <th>姓名</th>
+                                            <th>姓别</th>
+                                            <th>邮箱</th>
+                                            <th>手机</th>
+                                            <th>操作</th>
+                                        </tr>
+                                        </thead>
+                                        <!--<tbody>-->
+
+                                        <!--<tr>-->
+                                        <!--<td>-->
+                                        <!--<div class="form-check">-->
+                                        <!--<label class="form-check-label"><input class="form-check-input task-select" type="checkbox"><span class="form-check-sign"></span></label>-->
+                                        <!--</div>-->
+                                        <!--</td>-->
+
+                                        <!--<td class="td-actions text-center">-->
+                                        <!--<div class="form-button-action">-->
+                                        <!--<button type="button" data-toggle="tooltip" title="Edit Task" class="btn btn-link <btn-simple-primary"><i class="la la-edit"></i></button><button type="button" data-toggle="tooltip" title="Remove" class="btn btn-link btn-simple-danger"><i class="la la-times"></i></button>-->
+                                        <!--</div>-->
+                                        <!--</td>-->
+                                        <!--</tr>-->
+
+                                        <!--</tbody>-->
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="container-fluid">
+                <nav class="pull-left">
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                博客
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                帮助
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#license/#free-item">
+                                许可证
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </footer>
+    </div>
+</div>
+
+
+<!-- Modal -->
+
+<!-- 编辑用户信息 模态框 -->
+<div class="modal fade" id="userModifyModal" tabindex="-1" role="dialog" aria-labelledby="modalUpdatePro"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <h6 class="modal-title"><i class="la la-edit"></i>用户信息编辑</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                <form id="userModifyFrm">
+                    <div class="form-group from-show-notify row">
+                        <div class="col-lg-3 col-md-3 col-sm-12 text-right">
+                            <label>ID :</label>
+                        </div>
+                        <div class="col-lg-6 col-md-9 col-sm-12 text-left">
+                            <label id="modify_uid" name="uid"></label>
+                            <input type="hidden" id="hidden_uid" name="uid" />
+                        </div>
+                    </div>
+
+                    <div class="form-group from-show-notify row">
+                        <div class="col-lg-3 col-md-3 col-sm-12 text-right">
+                            <label>用户名 :</label>
+                        </div>
+                        <div class="col-lg-6 col-md-9 col-sm-12">
+                            <input type="text" class="form-control input-square" id="modify_uname" name="uname">
+                        </div>
+                    </div>
+
+                    <div class="form-group from-show-notify row">
+                        <div class="col-lg-3 col-md-3 col-sm-12 text-right">
+                            <label>性别 :</label>
+                        </div>
+                        <div class="col-lg-6 col-md-9 col-sm-12">
+                            <select id="modify_gender" name="gender" class="form-control text-center"
+                                    style="width: 90px;">
+                                <option value="男" selected="selected">男</option>
+                                <option value="女">女</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group from-show-notify row">
+                        <div class="col-lg-3 col-md-3 col-sm-12 text-right">
+                            <label>邮箱 :</label>
+                        </div>
+                        <div class="col-lg-6 col-md-9 col-sm-12">
+                            <input type="text" class="form-control input-square" id="modify_email" name="email">
+                        </div>
+                    </div>
+
+
+                    <div class="form-group from-show-notify row">
+                        <div class="col-lg-3 col-md-3 col-sm-12 text-right">
+                            <label>手机 :</label>
+                        </div>
+                        <div class="col-lg-6 col-md-9 col-sm-12">
+                            <input type="text" class="form-control input-square" id="modify_phone" name="phone">
+                        </div>
+                    </div>
+                </form>
+
+                <div class="modal-footer">
+                    <button id="modifyUserSubmit" type="button" class="btn btn-primary"> 　提交　</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">　关闭　</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 添加用户 模态框 -->
+<div class="modal fade" id="addUserModal" tabindex="-1" role="dialog" aria-labelledby="modalUpdatePro"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <h6 class="modal-title"><i class="la la-edit"></i>添加用户</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                <form method="post" id="addUserFrm">
+                    <!--<div class="form-group from-show-notify row" >-->
+                    <!--<div class="col-lg-3 col-md-3 col-sm-12 text-right">-->
+                    <!--<label>ID :</label>-->
+                    <!--</div>-->
+                    <!--<div class="col-lg-6 col-md-9 col-sm-12 text-left">-->
+                    <!--<label id="add_uid" name="uid"></label>-->
+                    <!--</div>-->
+                    <!--</div>-->
+
+                    <!--<input type="hidden" name="uid" id="add_uid"/>-->
+                    <input type="hidden" name="salt" id="add_salt" value=""/>
+
+                    <div class="form-group from-show-notify row">
+                        <div class="col-lg-3 col-md-3 col-sm-12 text-right">
+                            <label>用户名 :</label>
+                        </div>
+                        <div class="col-lg-6 col-md-9 col-sm-12">
+                            <input type="text" class="form-control input-square" id="add_uname" name="uname">
+                        </div>
+                    </div>
+
+                    <div class="form-group from-show-notify row">
+                        <div class="col-lg-3 col-md-3 col-sm-12 text-right">
+                            <label>性别 :</label>
+                        </div>
+                        <div class="col-lg-6 col-md-9 col-sm-12">
+                            <select id="add_gender" name="gender" class="form-control text-center"
+                                    style="width: 90px;">
+                                <option value="男" selected="selected">男</option>
+                                <option value="女">女</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group from-show-notify row">
+                        <div class="col-lg-3 col-md-3 col-sm-12 text-right">
+                            <label>密码 :</label>
+                        </div>
+                        <div class="col-lg-6 col-md-9 col-sm-12">
+                            <input type="password" class="form-control input-square" id="add_password"
+                                   name="password">
+                        </div>
+                    </div>
+
+                    <div class="form-group from-show-notify row">
+                        <div class="col-lg-3 col-md-3 col-sm-12 text-right">
+                            <label>邮箱 :</label>
+                        </div>
+                        <div class="col-lg-6 col-md-9 col-sm-12">
+                            <input type="text" class="form-control input-square" id="add_email" name="email">
+                        </div>
+                    </div>
+
+
+                    <div class="form-group from-show-notify row">
+                        <div class="col-lg-3 col-md-3 col-sm-12 text-right">
+                            <label>手机 :</label>
+                        </div>
+                        <div class="col-lg-6 col-md-9 col-sm-12">
+                            <input type="text" class="form-control input-square" id="add_phone" name="phone">
+                        </div>
+                    </div>
+                </form>
+                <div class="modal-footer">
+                    <button id="addUserSubmit" type="button" class="btn btn-primary"> 　提交　</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">　关闭　</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+<script src="assets/js/core/jquery.3.2.1.min.js"></script>
+<script src="assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+<script src="assets/js/core/popper.min.js"></script>
+<script src="assets/js/core/bootstrap.min.js"></script>
+<script src="assets/js/plugin/chartist/chartist.min.js"></script>
+<script src="assets/js/plugin/chartist/plugin/chartist-plugin-tooltip.min.js"></script>
+<!--<script src="assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>-->
+<script src="assets/js/plugin/bootstrap-toggle/bootstrap-toggle.min.js"></script>
+<script src="assets/js/plugin/jquery-mapael/jquery.mapael.min.js"></script>
+<script src="assets/js/plugin/jquery-mapael/maps/world_countries.min.js"></script>
+<script src="assets/js/plugin/chart-circle/circles.min.js"></script>
+<script src="assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+<script src="assets/js/ready.min.js"></script>
+<!--<script src="assets/js/demo.js"></script>-->
+
+<!-- Data Tables -->
+<script src="http://cdn.bootcss.com/datatables/1.10.11/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+<script src="http://cdn.bootcss.com/datatables/1.10.11/js/dataTables.bootstrap.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery.serializeJSON/2.8.0/jquery.serializejson.min.js"></script>
+
+<!-- md5 -->
+<script src="/static/ui/assets/js/jquery.md5.js"></script>
+
+
+<script>
+    $(function () {
+        //提示信息
+        var lang = {
+            "sProcessing": "处理中...",
+            "sLengthMenu": "每页 _MENU_ 项",
+            "sZeroRecords": "没有匹配结果",
+            "sInfo": "当前显示第 _START_ 至 _END_ 项，共 _TOTAL_ 项。",
+            "sInfoEmpty": "当前显示第 0 至 0 项，共 0 项",
+            "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
+            "sInfoPostFix": "",
+            "sSearch": "搜索:",
+            "sUrl": "",
+            "sEmptyTable": "表中数据为空",
+            "sLoadingRecords": "载入中...",
+            "sInfoThousands": ",",
+            "oPaginate": {
+                "sFirst": "首页",
+                "sPrevious": "上页",
+                "sNext": "下页",
+                "sLast": "末页",
+                "sJump": "跳转"
+            },
+            "oAria": {
+                "sSortAscending": ": 以升序排列此列",
+                "sSortDescending": ": 以降序排列此列"
+            }
+        };
+
+        //初始化表格
+        var table = $("#example").dataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                {
+                    text: '删除',
+                    action: function (e, dt, node, config) {
+                        //dt.ajax.reload();
+                        var arr = new Array();
+                        //var ids = "";
+                        $("input:checkbox[name=customerId]:checked").each(function (key, value) {
+                            arr[key] = $(value).val();
+                            //ids += ","+value;
+                        });
+                        //alert(ids);
+                        // alert("所有选中的商品ID:" + arr.join(","));
+                        if (arr.length == 0) {
+                            alert("请选择需要删除的商品!");
+                        } else {
+                            /* 封装请求参数 */
+                            var param = {};
+                            param.userIds = arr;
+
+                            // 发送 AJax 请求
+                            ajaxRequest("/admin/deleteUser", param, "删除成功!");
+                        }
+                    }
+                },
+                {
+                    text: '新增',
+                    action: function (e, dt, node, config) {
+                        //dt.ajax.reload();
+                        $("#addUserModal").modal("show");
+                    }
+                },
+            ],
+            language: lang,  //提示信息
+            autoWidth: false,  //禁用自动调整列宽
+            stripeClasses: ["odd", "even"],  //为奇偶行加上样式，兼容不支持CSS伪类的场合
+            processing: true,  //隐藏加载提示,自行处理
+            serverSide: true,  //启用服务器端分页
+            searching: true,  //禁用原生搜索
+            orderMulti: false,  //启用多列排序
+            // order: ['1', 'asc'],  // [] 取消默认排序查询,否则复选框一列会出现小箭头
+            ordering: false,     // 字段排序
+            renderer: "bootstrap",  //渲染样式：Bootstrap和jquery-ui
+            pagingType: "full_numbers",  //分页样式：simple,simple_numbers,full,full_numbers
+            //渲染
+            columnDefs: [
+                {
+                    "render": function (data, type, row) {
+                        // return "<input type='checkbox' name='uid' value='" + data + "'>"+data;
+                        return "<label class=\"form-check-label\">" +
+                            "<input onclick='changeAll()' name=\"customerId\" class=\"form-check-input task-select\" type=\"checkbox\" value='" + data + "'><span class=\"form-check-sign\"></span></label>";
+                    },
+                    "targets": 0, //指定渲染列：第一列(渲染第一列为单选框，data自动匹配为  {"data":"id"}中数据）‘
+
+                },
+
+                {
+                    "render": function (data, type, row, meta) {
+
+                        // return "<button type=\"button\" class=\"btn btn-block btn-default\" onclick='goodsModify(" + meta.row + ")'>修改</button>";
+                        return "<button type=\"button\" data-toggle=\"tooltip\" title=\"Edit Task\" class=\"btn btn-link <btn-simple-primary\" " +
+                            "onclick='customerModify(" + meta.row + ")'>" + "<i class=\"la la-edit\"></i></button>" +
+                            "<button type=\"button\" data-toggle=\"tooltip\" title=\"Remove\" class=\"btn btn-link btn-simple-danger\" " +
+                            "onclick='customerDelete(" + data + ")'><i class=\"la la-times\"></i></button>";
+                    },
+                    "targets": 6 //指定渲染列：第七列
+                },
+
+                // {
+                //     "targets": [0, 3, 5, 6],    //除 1,2,4 列外，都默认不排序
+                //     "orderable": false
+                // },
+
+                {
+                    "targets": 'nosort',  //列的样式名
+                    "orderable": false    //包含上样式名‘nosort’的禁止排序
+                }],
+            ajax: function (data, callback, settings) {
+                //封装请求参数
+                var param = {};
+                param.pageSize = data.length; //页面显示记录条数，在页面显示每页显示多少项的时候
+                param.start = data.start;    //开始的记录序号
+                param.pageNum = (data.start / data.length) + 1;//当前页码
+
+                //商品搜索
+                if (data.search.value != "") {
+                    param.search = data.search.value;
+                }
+                //数据排序
+                // if (data.order.length > 0) {
+                //     param.order = data.order[0].column;
+                //     param.dir = data.order[0].dir;
+                // }
+                //console.log(param);
+                //ajax请求数据
+                $.ajax({
+                    type: "POST",
+                    url: "/admin/userList",
+                    contentType: "application/json; charset=utf-8",
+                    cache: false,  //禁用缓存
+                    data: JSON.stringify(param),  //传入组装的参数
+                    dataType: "json",
+                    success: function (result) {
+                        //console.log(result);
+                        //setTimeout仅为测试延迟效果
+                        setTimeout(function () {
+                            //封装返回数据
+                            var returnData = {};
+                            returnData.draw = data.draw;//这里直接自行返回了draw计数器,应该由后台返回
+                            returnData.recordsTotal = result.data.totalRecord;//返回数据全部记录
+                            returnData.recordsFiltered = result.data.totalRecord;//后台不实现过滤功能，每次查询均视作全部结果
+                            returnData.data = result.data.data;    //返回的数据列表
+                            //console.log(returnData);
+                            //调用DataTables提供的callback方法，代表数据已封装完成并传回DataTables进行渲染
+                            //此时的数据需确保正确无误，异常判断应在执行此回调前自行处理完毕
+                            callback(returnData);
+                        }, 200);
+                    }
+                });
+            },
+            //列表表头字段
+            columns: [
+                {"data": "uid"},
+                {"data": "uid"},
+                {"data": "uname"},
+                {"data": "gender"},
+                {"data": "email"},
+                {"data": "phone"},
+                {"data": "uid"}
+            ]
+        }).api();
+        //此处需调用api()方法,否则返回的是JQuery对象而不是DataTables的API对象
+    });
+
+
+
+    /**
+     * 展示修改用户信息界面
+     */
+    function customerModify(index) {
+
+        // debugger
+        //获取datatables对象
+        var table = $("#example").dataTable();
+        //获取datatables表格数据
+        var nodes = table.fnGetNodes();
+        //获取datatables表格指定行数据
+        var row = table.fnGetData(nodes[index]);
+
+
+        // 一个 label 标签,用于展示 uid
+        $("#modify_uid").text(row.uid);
+
+        // 隐藏域的 uid, 用于编辑用户时提交
+        $("#hidden_uid").val(row.uid);
+
+        $("#modify_uname").val(row.uname);
+        $("#modify_gender").val(row.gender);
+        $("#modify_email").val(row.email);
+        $("#modify_phone").val(row.phone);
+        $("#userModifyModal").modal("show");
+    }
+
+
+    $(document).ready(function () {
+
+        /**
+         *  提交用户信息修改
+         */
+        $("#modifyUserSubmit").click(function () {
+            var url = "/admin/modifyUser";
+
+            $("")
+            var data = $("#userModifyFrm").serializeJSON();
+            var successMsg = "修改成功";
+            ajaxRequest(url, data, successMsg);
+        });
+
+
+        /**
+         *  提交添加用户
+         */
+        $("#addUserSubmit").click(function () {
+            var url = "/admin/addUser";
+
+            //设置盐值,并加密
+            var salt= Math.ceil(Math.random()*100000);
+            var password=$.md5($.md5($("#add_password").val())+salt);
+
+            // 把表单密码设置为加密后的密码
+            $("#add_password").val(password);
+
+            // 把盐值存放到表单
+            $("#add_salt").val(salt);
+
+            var data = $("#addUserFrm").serializeJSON();
+            var successMsg = "添加成功";
+            ajaxRequest(url, data, successMsg);
+        })
+    })
+
+
+    /**
+     * 删除
+     * @param uid
+     */
+    function customerDelete(uid) {
+        var arr = new Array();
+        arr.push(uid);
+        var param = {};
+        param.userIds = arr;
+        // 发送 AJax 请求
+        ajaxRequest("/admin/deleteUser", param, "删除成功!");
+    }
+
+    /**
+     * ajax 请求
+     * @param param
+     */
+    function ajaxRequest(url, param, successMsg) {
+        $.ajax({
+            type: "POST",
+            url: url,
+            contentType: "application/json; charset=utf-8",
+            cache: false,  //禁用缓存
+            data: JSON.stringify(param),  //传入组装的参数
+            dataType: "json",
+            success: function (result) {
+                if (result.code != "200") {
+                    alert(result.msg);
+                } else {
+                    alert(successMsg);
+                    $("#addUserModal").modal("hide");
+                    $("#userModifyModal").modal("hide");
+                    var table = $('#example').DataTable();
+                    table.ajax.reload(null, false);
+                }
+            }
+        });
+    }
+</script>
+
+<script>
+    $(function () {
+        $(".dt-button").addClass("btn btn-primary btn-border btn-round");
+
+        // 回到前台页面
+        $("#bookHouse").click(function () {
+
+            window.location.href = "/static/ui/index.html";
+        })
+    });
+
+    // 实现 checkbox 分选与全选绑定
+    function changeAll() {
+        if ($(this).is(":checked")) {
+            $("#allElection").prop("checked", true);
+        } else {
+            $("#allElection").prop("checked", false);
+        }
+        if ($("input:checkbox[name=booksId]:checked").length == $("input:checkbox[name=booksId]").length) {
+            $("#allElection").prop("checked", true);
+        }
+    }
+
+
+</script>
+
+</html>

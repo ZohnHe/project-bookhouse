@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bookstore.dao.mapping.ext.BookMapperExt" >
+  <resultMap id="BaseResultMap" type="com.bookstore.dao.pojo.Book"
+          extends="com.bookstore.dao.mapping.BookMapper.BaseResultMap">
+  </resultMap>
+
+
+  <select id="getBookStockById" resultMap="BaseResultMap">
+    select b.stock
+    from book b
+    where bid=#{bid}
+  </select>
+
+  <select id="getBookInfoById" resultMap="BaseResultMap">
+    select *
+    from book
+    where bid=#{bid}
+  </select>
+
+
+</mapper>
